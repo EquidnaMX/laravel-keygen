@@ -1,0 +1,32 @@
+{
+    "name": "ometra/genkey",
+    "description": "Token generator client for API consumption",
+    "type": "library",
+    "require": {
+        "laravel/framework": "^12.0",
+        "equidna/laravel-toolkit": "^1.0",
+        "laravel/prompts": "^0.3.8"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ometra\\Genkey\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "omaar-es",
+            "email": "omar.redondo.gonzalez.1b@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ometra\\Genkey\\Providers\\GenKeyServiceProvider"
+            ],
+            "aliases": {
+                "GenKey": "Ometra\\Genkey\\Facades\\GenKeyClient"
+            }
+        }
+    }
+}
