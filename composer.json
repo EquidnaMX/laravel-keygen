@@ -10,7 +10,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ometra\\Genkey\\": "src/"
+            "Equidna\\KeyGen\\": "src/"
         }
     },
     "authors": [
@@ -22,10 +22,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Ometra\\Genkey\\Providers\\GenKeyServiceProvider"
+                "Equidna\\KeyGen\\Providers\\KeyGenServiceProvider"
             ],
             "aliases": {
-                "GenKey": "Ometra\\Genkey\\Facades\\GenKeyClient"
+                "KeyGen": "Equidna\\KeyGen\\Facades\\KeyGen"
             }
         }
     }

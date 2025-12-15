@@ -1,11 +1,11 @@
 <?php
 
-namespace Ometra\Genkey\Http\Middleware;
+namespace Equidna\KeyGen\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Ometra\Genkey\Facades\GenKey;
+use Equidna\KeyGen\Facades\KeyGen;
 
 class ValidateToken
 {
@@ -17,7 +17,7 @@ class ValidateToken
             return response()->json(['message' => 'Token not found'], 401);
         }
 
-        if (!GenKey::validateToken($token_str)) {
+        if (!KeyGen::validateToken($token_str)) {
             return response()->json(['message' => 'Token not valid'], 401);
         }
         return $next($request);

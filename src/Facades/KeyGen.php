@@ -1,13 +1,13 @@
 <?php
 
-namespace Ometra\Genkey\Facades;
+namespace Equidna\KeyGen\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class GenKey extends Facade
+class KeyGen extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Ometra\Genkey\Genkey::class;
+        return \Equidna\KeyGen\KeyGen::class;
     }
 }

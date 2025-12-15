@@ -1,9 +1,9 @@
 <?php
 
-namespace Ometra\Genkey\console\commands;
+namespace Equidna\KeyGen\console\commands;
 
 use Illuminate\Console\Command;
-use Ometra\Genkey\Genkey;
+use Equidna\KeyGen\KeyGen;
 
 use function Laravel\Prompts\note;
 use function Laravel\Prompts\text;
@@ -16,8 +16,8 @@ class CreateToken extends Command
     public function handle()
     {
         note('Generacion de un token:');
-        $id = text('Escribe el nombre del token:');
-        $token = GenKey::generateToken($id);
+        $nombre = text('Escribe el nombre del token:');
+        $token = KeyGen::generateToken($nombre);
         $this->info("¡Listo! El token se genero correctamente << {$token} >>");
         return 0;
     }

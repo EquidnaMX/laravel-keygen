@@ -1,16 +1,10 @@
 <?php
 
-namespace Ometra\Genkey\Models;
+namespace Equidna\KeyGen\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-/**
- * Eloquent model for Caronte users.
- *
- * @author Gabriel Ruelas
- * @license MIT
- * @version 1.1.0
- */
 class KeyGenToken extends Model
 {
     protected $table      = 'KeyGenTokens';
@@ -28,4 +22,9 @@ class KeyGenToken extends Model
         'tokeneable_type',
         'nombre',
     ];
+
+    public function tokeneable(): MorphTo
+    {
+        return $this->morphTo(__FUNCTION__, 'tokeneable_type', 'tokeneable_id');
+    }
 }

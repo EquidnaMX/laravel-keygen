@@ -1,26 +1,26 @@
 <?php
 
-namespace Ometra\Genkey\Providers;
+namespace Equidna\KeyGen\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
-use Ometra\Genkey\console\commands\CreateToken;
-use Ometra\Genkey\Genkey;
+use Equidna\KeyGen\console\commands\CreateToken;
+use Equidna\KeyGen\KeyGen;
 
-class GenKeyServiceProvider extends ServiceProvider
+class KeyGenServiceProvider extends ServiceProvider
 {
     public function register()
     {
         // Registrar cosas en el contenedor de servicios
         $this->app->singleton(
-            Genkey::class,
-            fn() => new Genkey()
+            KeyGen::class,
+            fn() => new KeyGen()
         );
     }
 
     public function boot(Router $router)
     {
-        $router->aliasMiddleware('GenKey.ValidateToken', \Ometra\Genkey\Http\Middleware\ValidateToken::class);
+        $router->aliasMiddleware('KeyGen.ValidateToken', \Equidna\KeyGen\Http\Middleware\ValidateToken::class);
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         //Migrations
         $this->publishes(

@@ -1,11 +1,12 @@
 <?php
 
-namespace Ometra\Genkey;
+namespace Equidna\KeyGen;
 
-use Ometra\Genkey\Models\KeyGenToken;
+use Equidna\KeyGen\Models\KeyGenToken;
+use Exception;
 use Illuminate\Support\Str;
 
-class Genkey
+class KeyGen
 {
     public static function generateToken(string $nombre): string
     {
@@ -23,8 +24,12 @@ class Genkey
     public static function validateToken(string $token): bool
     {
         $hashedToken = hash('sha256', $token);
-        if (KeyGenToken::findOrFail($hashedToken)) {
-            return true;
+        try {
+            if (KeyGenToken::findOrFail($hashedToken)) {
+                return true;
+            }
+        } catch (Exception $e) {
+            return false;
         }
         return false;
     }
