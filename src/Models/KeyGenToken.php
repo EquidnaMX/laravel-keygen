@@ -24,6 +24,8 @@ class KeyGenToken extends Model
 
     protected $fillable = [
         'token',
-        'app_id',
+        'tokeneable_id',
+        'tokeneable_type',
+        'nombre',
     ];
 }

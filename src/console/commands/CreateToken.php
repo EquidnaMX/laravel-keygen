@@ -16,9 +16,9 @@ class CreateToken extends Command
     public function handle()
     {
         note('Generacion de un token:');
-        $id = text('Escribe el id de la app:');
+        $id = text('Escribe el nombre del token:');
         $token = GenKey::generateToken($id);
-        $this->info("¡Listo! El token se genero correctamente {$token}");
+        $this->info("¡Listo! El token se genero correctamente << {$token} >>");
         return 0;
     }
 }

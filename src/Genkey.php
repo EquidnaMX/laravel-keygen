@@ -3,18 +3,18 @@
 namespace Ometra\Genkey;
 
 use Ometra\Genkey\Models\KeyGenToken;
+use Illuminate\Support\Str;
 
 class Genkey
 {
-    public static function generateToken(string $appId): string
+    public static function generateToken(string $nombre): string
     {
-        $token = bin2hex(random_bytes(20));
-        $prepare = $token . ":" . $appId;
-        $token = base64_encode($prepare);
+        $token = Str::random(40);
+        $hashedToken = hash('sha256', $token);
 
         KeyGenToken::create([
-            'token'  => $token,
-            'app_id' => $appId,
+            'token'  => $hashedToken,
+            'nombre' => $nombre,
         ]);
 
         return $token;
@@ -22,16 +22,10 @@ class Genkey
 
     public static function validateToken(string $token): bool
     {
-        $decoded = base64_decode($token);
-        $parts = explode(":", $decoded);
-        if (count($parts) !== 2) {
-            return false;
+        $hashedToken = hash('sha256', $token);
+        if (KeyGenToken::findOrFail($hashedToken)) {
+            return true;
         }
-        $appId = $parts[1];
-        $record = KeyGenToken::where('token', $token)
-            ->where('app_id', $appId)
-            ->first();
-
-        return $record !== null;
+        return false;
     }
 }

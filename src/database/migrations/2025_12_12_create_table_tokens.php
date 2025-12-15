@@ -13,8 +13,10 @@ return new class extends Migration
     {
         if (!Schema::hasTable('KeyGenTokens')) {
             Schema::create('KeyGenTokens', function (Blueprint $table) {
-                $table->string('token', 120)->primary();
-                $table->string('app_id', 40);
+                $table->string('token', 64)->primary();
+                $table->string('tokenable_id', 45)->nullable();
+                $table->string('tokenable_type', 45)->nullable();
+                $table->string('nombre', 145);
                 $table->engine = 'InnoDB';
             });
         }

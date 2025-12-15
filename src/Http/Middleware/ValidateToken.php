@@ -17,9 +17,7 @@ class ValidateToken
             return response()->json(['message' => 'Token not found'], 401);
         }
 
-        $isValid = GenKey::validateToken($token_str);
-
-        if (!$isValid) {
+        if (!GenKey::validateToken($token_str)) {
             return response()->json(['message' => 'Token not valid'], 401);
         }
         return $next($request);
