@@ -18,7 +18,7 @@ class CreateToken extends Command
         note('Generacion de un token:');
         $nombre = text('Escribe el nombre del token:');
         $token = KeyGen::generateToken($nombre);
-        $this->info("¡Listo! El token se genero correctamente << {$token} >>");
+        $this->info("¡Listo! El token se genero correctamente << {$token->plainToken} >>");
         return 0;
     }
 }
