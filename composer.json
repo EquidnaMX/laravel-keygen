@@ -1,5 +1,5 @@
 {
-    "name": "ometra/genkey",
+    "name": "equidna/keygen",
     "description": "Token generator client for API consumption",
     "type": "library",
     "require": {
