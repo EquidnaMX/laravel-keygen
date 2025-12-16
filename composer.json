@@ -3,7 +3,7 @@
     "description": "Token generator client for API consumption",
     "type": "library",
     "require": {
-        "laravel/framework": "^12.0",
+        "laravel/framework": "^12.0 | ^11.0",
         "equidna/laravel-toolkit": "^1.0",
         "laravel/prompts": "^0.3.8"
     },
